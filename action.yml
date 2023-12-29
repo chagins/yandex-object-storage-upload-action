@@ -1,0 +1,43 @@
+name: "Yandex object storage upload action"
+description: "Github action for uploading files to Yandex S3 Object Storage"
+inputs:
+  access_key_id:
+    description: "Access key id"
+    required: true
+    default: ""
+  secret_access_key:
+    description: "Secret access key"
+    required: true
+    default: ""
+  bucket:
+    description: "Bucket name"
+    required: true
+    default: ""
+  source_path:
+    description: "Source path"
+    default: "./"
+    required: true
+  dest_path:
+    description: "Destination path"
+    default: ""
+    required: true
+  clear:
+    description: "Clear destination path before uploading"
+    default: "false"
+    required: true
+  include:
+    description: "Include patterns"
+    default: ""
+    required: false
+  exclude:
+    description: "Exclude patterns"
+    default: ""
+    required: false
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
+
+branding:
+    icon: "upload-cloud"
+    color: "blue"
