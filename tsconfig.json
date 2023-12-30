@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES6",
+    "lib": ["ES6"],
+    /* Emit */
+    "outDir": "./dist/",
+    "sourceMap": false,
+    /* Modules */
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
+    "module": "ES6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    /* Type Checking */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": true,
+    /* Interop Constraints */
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    /* Completeness */
+    "skipLibCheck": true
+  },
+  /* Webpack typescript config support*/
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src/**/*"]
+}
