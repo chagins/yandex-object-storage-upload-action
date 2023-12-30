@@ -16,22 +16,14 @@ inputs:
   source_path:
     description: "Source path"
     default: "./"
-    required: true
+    required: false
   dest_path:
     description: "Destination path"
     default: ""
-    required: true
+    required: false
   clear:
     description: "Clear destination path before uploading"
     default: "false"
-    required: true
-  include:
-    description: "Include patterns"
-    default: ""
-    required: false
-  exclude:
-    description: "Exclude patterns"
-    default: ""
     required: false
 
 runs:
