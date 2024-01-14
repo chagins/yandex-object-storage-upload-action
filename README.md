@@ -5,7 +5,7 @@
 | Key | Value | Default | Required |
 | - | - | - | - |
 | `access_key_id` | The ID of the key |   | ✅ |
-| `secret_access_key` | The secret key | ✅ |
+| `secret_access_key` | The secret key |   | ✅ |
 | `bucket` | Bucket name |   | ✅ |
 | `source_path` | Specify the source directory path | `.` | ❌ |
 | `dest_path` | Specify the destination directory path | `.` | ❌ |

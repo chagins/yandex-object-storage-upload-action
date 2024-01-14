@@ -40,13 +40,11 @@ const main = async () => {
     );
 
     core.setOutput("upload", upload);
-
   } catch (err) {
+    console.error(err);
     if (err instanceof Error) {
       core.setFailed(err);
     }
-
-    console.error(err);
   }
 };
 
