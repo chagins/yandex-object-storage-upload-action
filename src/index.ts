@@ -1,4 +1,4 @@
-import core from "@actions/core";
+import * as core from "@actions/core";
 import github from "@actions/github";
 import easyYandexS3 from "easy-yandex-s3";
 import { getInputs } from "./helpers";
@@ -40,13 +40,11 @@ const main = async () => {
     );
 
     core.setOutput("upload", upload);
-
   } catch (err) {
+    console.error(err);
     if (err instanceof Error) {
       core.setFailed(err);
     }
-
-    console.error(err);
   }
 };
 
