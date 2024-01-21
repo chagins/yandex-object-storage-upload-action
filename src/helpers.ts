@@ -6,9 +6,9 @@ export const getInputs = (): Inputs => {
     accessKeyId: core.getInput("access_key_id", { required: true }),
     secretAccessKey: core.getInput("secret_access_key", { required: true }),
     bucket: core.getInput("bucket", { required: true }),
-    sourcePath: core.getInput("source_path", { required: true }),
-    destPath: core.getInput("dest_path", { required: true }),
-    clear: core.getInput("clear", { required: true }) === "true",
+    sourcePath: core.getInput("source_path", { required: false }),
+    destPath: core.getInput("dest_path", { required: false }),
+    clear: core.getInput("clear", { required: false }) === "true",
   };
 
   core.setOutput("inputs", inputs);

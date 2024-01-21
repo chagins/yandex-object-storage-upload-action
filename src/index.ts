@@ -24,7 +24,9 @@ const main = async () => {
     });
 
     if (clear && !destPath) {
-      await s3.CleanUp();
+      const cleanupResult = await s3.CleanUp();
+      console.log("files to cleanup:", cleanupResult);
+      core.setOutput("files to cleanup:", cleanupResult);
     }
 
     if (clear && destPath) {
