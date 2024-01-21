@@ -12,8 +12,6 @@ export const getInputs = (): Inputs => {
     clear: core.getInput("clear", { required: false }) === "true",
   };
 
-  core.setOutput("inputs", inputs);
-
   return inputs;
 };
 
@@ -22,7 +20,7 @@ export const removeFileList = async <T extends { Key?: string }>(
   list: T[]
 ) => {
   try {
-    await Promise.all(
+    const removePromises = await Promise.all(
       list.map(async (file) => {
         if (file?.Key) {
           const removeResult = await s3Instance.Remove(file.Key);
@@ -31,7 +29,11 @@ export const removeFileList = async <T extends { Key?: string }>(
       })
     );
 
-    console.log("All files were deleted");
+    if (removePromises.length === 0) {
+      console.log("No files to delete");
+    } else {
+      console.log("All files were deleted");
+    }
   } catch (err) {
     console.error("remove file list error", err);
   }
