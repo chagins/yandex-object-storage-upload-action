@@ -9,23 +9,28 @@
 | `bucket` | Bucket name |   | ✅ |
 | `source_path` | Specify the source directory path | `.` | ❌ |
 | `dest_path` | Specify the destination directory path | `.` | ❌ |
-| `clear` | Clear bucket before deploy | `false` | ❌ |
+| `clear` | Clear bucket or directory ( `dest_path` ) before deploy | `false` | ❌ |
 
 
-## Example
+## Example 1
+
+Only required parameters are specified (`access_key_id`, `secret_access_key`, `bucket`). All files and folders will be copied to the bucket. Nothing will be deleted from the bucket.
 
 ```yaml
+
 name: deploy
 
 on:
+  push:
+    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: install NPM dependencies
