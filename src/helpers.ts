@@ -20,7 +20,7 @@ export const removeFileList = async <T extends { Key?: string }>(
   list: T[]
 ) => {
   try {
-    const removePromises = await Promise.all(
+    await Promise.all(
       list.map(async (file) => {
         if (file?.Key) {
           const removeResult = await s3Instance.Remove(file.Key);
@@ -28,12 +28,6 @@ export const removeFileList = async <T extends { Key?: string }>(
         }
       })
     );
-
-    if (removePromises.length === 0) {
-      console.log("No files to delete");
-    } else {
-      console.log("All files were deleted");
-    }
   } catch (err) {
     console.error("remove file list error", err);
   }
