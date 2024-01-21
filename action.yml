@@ -15,7 +15,7 @@ inputs:
     default: ""
   source_path:
     description: "Source path"
-    default: "./"
+    default: "."
     required: false
   dest_path:
     description: "Destination path"
@@ -31,5 +31,5 @@ runs:
   main: "dist/index.js"
 
 branding:
-    icon: "upload-cloud"
-    color: "blue"
+  icon: "upload-cloud"
+  color: "blue"
