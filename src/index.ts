@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import easyYandexS3 from "easy-yandex-s3";
-import { getInputs } from "./helpers";
+import { getInputs, removeFileList } from "./helpers";
 
 const main = async () => {
   try {
@@ -32,6 +32,10 @@ const main = async () => {
       const filesToDelete = await s3.GetList(destPath);
       console.log("files to delete:", filesToDelete);
       core.setOutput("files to delete:", filesToDelete);
+
+      if (filesToDelete && filesToDelete?.Contents) {
+        await removeFileList(s3, filesToDelete.Contents);
+      }
     }
 
     const upload = await s3.Upload(

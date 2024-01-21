@@ -1,5 +1,6 @@
 import * as core from "@actions/core";
 import { Inputs } from "types";
+import easyYandexS3 from "easy-yandex-s3";
 
 export const getInputs = (): Inputs => {
   const inputs: Inputs = {
@@ -14,4 +15,24 @@ export const getInputs = (): Inputs => {
   core.setOutput("inputs", inputs);
 
   return inputs;
+};
+
+export const removeFileList = async <T extends { Key?: string }>(
+  s3Instance: easyYandexS3,
+  list: T[]
+) => {
+  try {
+    await Promise.all(
+      list.map(async (file) => {
+        if (file?.Key) {
+          const removeResult = await s3Instance.Remove(file.Key);
+          console.log(`${file.Key} remove result: `, removeResult);
+        }
+      })
+    );
+
+    console.log("All files were deleted");
+  } catch (err) {
+    console.error("remove file list error", err);
+  }
 };
