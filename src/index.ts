@@ -1,5 +1,4 @@
 import * as core from "@actions/core";
-import github from "@actions/github";
 import easyYandexS3 from "easy-yandex-s3";
 import { getInputs } from "./helpers";
 
