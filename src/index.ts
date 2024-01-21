@@ -20,6 +20,7 @@ const main = async () => {
         secretAccessKey,
       },
       Bucket: bucket,
+      debug: true,
     });
 
     if (clear && !destPath) {
@@ -28,6 +29,7 @@ const main = async () => {
 
     if (clear && destPath) {
       const filesToDelete = await s3.GetList(destPath);
+      console.log("files to delete:", filesToDelete);
       core.setOutput("files to delete:", filesToDelete);
     }
 
@@ -40,6 +42,7 @@ const main = async () => {
     );
 
     core.setOutput("upload", upload);
+    console.log(upload);
   } catch (err) {
     console.error(err);
     if (err instanceof Error) {
