@@ -25,13 +25,11 @@ const main = async () => {
     if (clear && !destPath) {
       const cleanupResult = await s3.CleanUp();
       console.log("files to cleanup:", cleanupResult);
-      core.setOutput("files to cleanup:", cleanupResult);
     }
 
     if (clear && destPath) {
       const filesToDelete = await s3.GetList(destPath);
       console.log("files to delete:", filesToDelete);
-      core.setOutput("files to delete:", filesToDelete);
 
       if (filesToDelete && filesToDelete?.Contents) {
         await removeFileList(s3, filesToDelete.Contents);
@@ -46,13 +44,9 @@ const main = async () => {
       destPath
     );
 
-    core.setOutput("upload", upload);
     console.log(upload);
   } catch (err) {
     console.error(err);
-    if (err instanceof Error) {
-      core.setFailed(err);
-    }
   }
 };
 
